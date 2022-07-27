@@ -31,20 +31,6 @@
             <img src="/img/heroteeth.png" class="interval-img d-none d-lg-flex" alt="">
             <img src="/img/points.png" class="points-img d-none d-lg-flex" alt="">
         </section>
-<!--        <section class="interval-section d-none d-lg-flex">-->
-<!--            <div class="container">-->
-<!--                <div class="row">-->
-<!--                    <div class="col-12 col-lg-6">-->
-<!--                    </div>-->
-<!--                    <div class="col-12 col-lg-6">-->
-<!--                        <div class="interval-lines-wrap">-->
-<!--                            <span class="interval-line interval-line-one"></span>-->
-<!--                            <span class="interval-line interval-line-two"></span>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </section>-->
         <section class="second-section section-padding pb-0 pb-5">
             <div class="container second-sec-cont">
                 <div class="row second-sec-row">
@@ -130,12 +116,12 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 ml-auto">
-                        <img src="/img/about-img1.png" class="about-img" alt="">
+                        <img src="/img/about-img1.png" class="about-img d-flex ml-auto" alt="">
                         <div class="interval-lines-wrap d-none d-lg-flex mt-5">
                             <span class="interval-line interval-line-one mr-5"></span>
                             <span class="interval-line interval-line-two"></span>
                         </div>
-                        <img src="/img/about-img2.png" class="d-none d-lg-flex mt-3" alt="">
+                        <img src="/img/about-img2.png" class="d-none d-lg-flex mt-3 ml-auto" alt="">
                     </div>
                 </div>
             </div>
@@ -152,10 +138,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-lg-6">
+                    <div class="col-12 col-lg-5">
                         <img src="/img/employees.jpg" style="position: relative; z-index: 10;" alt="">
                     </div>
-                    <div class="col-12 col-lg-5 ml-auto">
+                    <div class="col-12 col-lg-6 ml-auto">
                         <div class="about-text-wrap justify-content-center mt-3 mt-lg-0">
                             <p class="second-sec-text about-text">
                                 В клинике CREADENT работают высококвалифицированные специалисты, которые окажут вам лучшее лечение и сервис в городе. Мы используем комплексный подход, основанный на составлении индивидуального плана лечения для каждого пациента.
@@ -239,6 +225,7 @@
                     ServicesComponent
                 },
                 preloader: false,
+                startAnimation: false,
                 form: false,
                 heroH: '',
                 screenWidth: 0,
@@ -289,6 +276,7 @@
             }
         },
         mounted() {
+            this.loadAnimation()
         },
         methods: {
             selectService(service) {
@@ -316,6 +304,13 @@
                     .catch(function (error) {
                         self.form = 'error'
                     })
+            },
+            loadAnimation() {
+                document.addEventListener('DOMContentLoaded', () => {
+                    if (this.heroH !== 0) {
+                        this.startAnimation = true
+                    }
+                })
             }
         },
         computed: {

@@ -2301,23 +2301,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -2328,21 +2311,21 @@ __webpack_require__.r(__webpack_exports__);
         name: 'Симиониди Иван Ставриевич',
         speciality: 'стоматолог-хирург, имплантолог',
         exp: 'более 15 лет',
-        img: '/img/main-dr2.jpg'
+        img: '/img/main-dr3.jpg'
       }, {
         id: 2,
         jobTitle: 'Медицинская сестра',
         name: 'Кузнецова Анна Алексеевна',
         speciality: 'стоматолог-хирург, имплантолог',
         exp: 'более 15 лет',
-        img: '/img/sestra.jpg'
+        img: '/img/sestra3.jpg'
       }, {
         id: 3,
         jobTitle: 'Администратор',
         name: 'Селиванова Алина Александровна',
         speciality: 'стоматолог-хирург, имплантолог',
         exp: 'более 15 лет',
-        img: '/img/administrator.jpg'
+        img: '/img/administrator3.jpg'
       }]
     };
   },
@@ -2720,20 +2703,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 Vue.use((vue_the_mask__WEBPACK_IMPORTED_MODULE_1___default()));
@@ -2744,6 +2713,7 @@ Vue.use((vue_the_mask__WEBPACK_IMPORTED_MODULE_1___default()));
         ServicesComponent: _ServicesComponent_vue__WEBPACK_IMPORTED_MODULE_0__.default
       },
       preloader: false,
+      startAnimation: false,
       form: false,
       heroH: '',
       screenWidth: 0,
@@ -2786,7 +2756,9 @@ Vue.use((vue_the_mask__WEBPACK_IMPORTED_MODULE_1___default()));
       selectedService: ''
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.loadAnimation();
+  },
   methods: {
     selectService: function selectService(service) {
       this.selectedService = service;
@@ -2810,16 +2782,25 @@ Vue.use((vue_the_mask__WEBPACK_IMPORTED_MODULE_1___default()));
       })["catch"](function (error) {
         self.form = 'error';
       });
+    },
+    loadAnimation: function loadAnimation() {
+      var _this = this;
+
+      document.addEventListener('DOMContentLoaded', function () {
+        if (_this.heroH !== 0) {
+          _this.startAnimation = true;
+        }
+      });
     }
   },
   computed: {
     heroHeight: function heroHeight() {
-      var _this = this;
+      var _this2 = this;
 
       document.addEventListener('DOMContentLoaded', function () {
         var H = window.innerHeight;
-        _this.heroH = H;
-        _this.screenWidth = window.innerWidth;
+        _this2.heroH = H;
+        _this2.screenWidth = window.innerWidth;
       });
     }
   },
@@ -60619,7 +60600,7 @@ var render = function() {
           "div",
           { staticClass: "row" },
           _vm._l(_vm.employees, function(employ) {
-            return _c("div", { staticClass: "col-12 col-lg-8 mb-5" }, [
+            return _c("div", { staticClass: "col-12 col-lg-4" }, [
               _c("div", { staticClass: "employ-wrap" }, [
                 _c("img", {
                   staticClass: "employ-img",
@@ -60627,56 +60608,21 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c("div", { staticClass: "employ-info" }, [
-                  _c("img", {
-                    staticClass: "employ-info__tooth",
-                    attrs: { src: "/img/big-tooth.png", alt: "" }
-                  }),
-                  _vm._v(" "),
                   _c("div", [
                     _c("p", { staticClass: "employ-info__title" }, [
-                      _vm._v(
-                        "\n                                    " +
-                          _vm._s(employ.jobTitle) +
-                          "\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "employ-info__name" }, [
                       _vm._v(
                         "\n                                    " +
                           _vm._s(employ.name) +
                           "\n                                "
                       )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("p", { staticClass: "employ-info__subtitle" }, [
-                      _vm._v(
-                        "\n                                    Специальность:\n                                "
-                      )
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "employ-info__name" }, [
                       _vm._v(
                         "\n                                    " +
+                          _vm._s(employ.jobTitle) +
+                          ", " +
                           _vm._s(employ.speciality) +
-                          "\n                                "
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", [
-                    _c("p", { staticClass: "employ-info__subtitle" }, [
-                      _vm._v(
-                        "\n                                    Стаж:\n                                "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("p", { staticClass: "employ-info__name" }, [
-                      _vm._v(
-                        "\n                                    " +
-                          _vm._s(employ.exp) +
                           "\n                                "
                       )
                     ])
@@ -60796,7 +60742,7 @@ var render = function() {
           _c("div", { staticClass: "col-5" }, [
             _c("a", { staticClass: "logo-wrap", attrs: { href: "/" } }, [
               _c("img", {
-                staticClass: "logo",
+                staticClass: "logo logo-animation",
                 attrs: { src: _vm.logo, alt: "" }
               })
             ])
@@ -61552,7 +61498,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("div", { staticClass: "col-12 col-lg-6 ml-auto" }, [
             _c("img", {
-              staticClass: "about-img",
+              staticClass: "about-img d-flex ml-auto",
               attrs: { src: "/img/about-img1.png", alt: "" }
             }),
             _vm._v(" "),
@@ -61569,7 +61515,7 @@ var staticRenderFns = [
             ),
             _vm._v(" "),
             _c("img", {
-              staticClass: "d-none d-lg-flex mt-3",
+              staticClass: "d-none d-lg-flex mt-3 ml-auto",
               attrs: { src: "/img/about-img2.png", alt: "" }
             })
           ])
@@ -61602,14 +61548,14 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-12 col-lg-6" }, [
+            _c("div", { staticClass: "col-12 col-lg-5" }, [
               _c("img", {
                 staticStyle: { position: "relative", "z-index": "10" },
                 attrs: { src: "/img/employees.jpg", alt: "" }
               })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-12 col-lg-5 ml-auto" }, [
+            _c("div", { staticClass: "col-12 col-lg-6 ml-auto" }, [
               _c(
                 "div",
                 {

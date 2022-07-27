@@ -33,9 +33,6 @@
     <link rel="stylesheet" href="{{ asset('css/glob.css?v=1') }}">
 @yield('css')
 
-<!-- Scripts -->
-    <script src="{{ asset('js/app.js?v=1') }}" defer></script>
-
 </head>
 <body>
 
@@ -47,6 +44,9 @@
 </div>
 
 
+
+<!-- Scripts -->
+<script src="{{ asset('js/app.js?v=1') }}" defer></script>
 
 </body>
 </html>

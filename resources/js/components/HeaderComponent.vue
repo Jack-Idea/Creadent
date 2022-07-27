@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-5" style="">
                     <a href="/" class="logo-wrap">
-                        <img :src="logo" alt="" class="logo">
+                        <img :src="logo" alt="" class="logo logo-animation">
                     </a>
                 </div>
                 <div class="col-5 col-lg-6 col-xl-5 d-flex ml-auto">

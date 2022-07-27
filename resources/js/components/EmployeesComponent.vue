@@ -11,33 +11,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div v-for="employ in employees" class="col-12 col-lg-8 mb-5">
+                    <div v-for="employ in employees" class="col-12 col-lg-4">
                         <div class="employ-wrap">
                             <img :src="employ.img" class="employ-img" alt="">
                             <div class="employ-info">
-                                <img src="/img/big-tooth.png" class="employ-info__tooth" alt="">
                                 <div>
                                     <p class="employ-info__title">
-                                        {{ employ.jobTitle }}
-                                    </p>
-                                    <p class="employ-info__name">
                                         {{ employ.name }}
                                     </p>
-                                </div>
-                                <div>
-                                    <p class="employ-info__subtitle">
-                                        Специальность:
-                                    </p>
                                     <p class="employ-info__name">
-                                        {{ employ.speciality }}
-                                    </p>
-                                </div>
-                                <div>
-                                    <p class="employ-info__subtitle">
-                                        Стаж:
-                                    </p>
-                                    <p class="employ-info__name">
-                                        {{ employ.exp }}
+                                        {{ employ.jobTitle }}, {{ employ.speciality }}
                                     </p>
                                 </div>
                             </div>
@@ -61,7 +44,7 @@
                         name: 'Симиониди Иван Ставриевич',
                         speciality: 'стоматолог-хирург, имплантолог',
                         exp: 'более 15 лет',
-                        img: '/img/main-dr2.jpg'
+                        img: '/img/main-dr3.jpg'
                     },
                     {
                         id: 2,
@@ -69,7 +52,7 @@
                         name: 'Кузнецова Анна Алексеевна',
                         speciality: 'стоматолог-хирург, имплантолог',
                         exp: 'более 15 лет',
-                        img: '/img/sestra.jpg'
+                        img: '/img/sestra3.jpg'
                     },
                     {
                         id: 3,
@@ -77,7 +60,7 @@
                         name: 'Селиванова Алина Александровна',
                         speciality: 'стоматолог-хирург, имплантолог',
                         exp: 'более 15 лет',
-                        img: '/img/administrator.jpg'
+                        img: '/img/administrator3.jpg'
                     }
                 ]
             }

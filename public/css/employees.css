@@ -6,36 +6,39 @@ p {
 .about-section {
     position: relative;
     padding-top: 25px;
+    min-height: calc(100vh - 280px);
+    display: flex;
+    align-items: center;
+}
+
+.page-title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
 }
 
 .crea-bg-text {
     position: absolute;
-    right: 100px;
-    top: 0;
+    top: 10%;
     width: 100%;
-    transform: rotateZ(-90deg);
-    transform-origin: right;
 }
 
 .employ-wrap {
     display: flex;
+    flex-direction: column;
     width: 100%;
+    align-items: center;
 }
 
 .employ-img {
-    width: 30%;
-    border-radius: 10px;
+    width: 50%;
+    border-radius: 50%;
 }
 
 .employ-info {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    width: 69%;
-    margin-left: auto;
-    background: var(--card-color);
-    border-radius: 10px;
-    padding: 4% 3%;
     position: relative;
 }
 
@@ -49,43 +52,58 @@ p {
 }
 
 .employ-info__title {
-    text-transform: uppercase;
-    color: #fff;
-    font-weight: 500;
-    font-size: 1.5vw;
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 1.3vw;
+    text-align: center;
+    margin-top: 32px;
+    margin-bottom: 32px;
 }
 
 .employ-info__name {
-    color: #fff;
-    font-size: 1.4vw;
+    color: #777;
+    font-size: 1vw;
+    text-align: center;
+    font-weight: 500;
 }
 
-.employ-info__subtitle {
-    color: #fff;
-    font-size: 1.2vw;
-    text-transform: uppercase;
-    font-weight: 500;
+@media screen and (min-width: 1920px) {
+    .employ-info__title {
+        font-size: 30px;
+    }
+
+    .employ-info__name {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 992px){
+    .employ-info__title {
+        font-size: 4vw;
+    }
+
+    .employ-info__name {
+        font-size: 3vw;
+        margin-bottom: 32px;
+    }
 }
 
 @media screen and (max-width: 768px) {
     .employ-img {
-        width: 40%;
+        /*width: 40%;*/
     }
 
     .employ-info {
-        width: 59%;
+        /*width: 59%;*/
     }
 
     .employ-info__title {
-        font-size: 14px;
+        font-size: 5vw;
+        margin-bottom: 16px;
     }
 
     .employ-info__name {
-        font-size: 13px;
-    }
-
-    .employ-info__subtitle {
-        font-size: 13px;
+        font-size: 4vw;
     }
 
     .crea-bg-text {
