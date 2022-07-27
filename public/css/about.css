@@ -1,0 +1,21 @@
+.crea-bg-text {
+    margin-top: 100px;
+}
+
+@media screen and (max-width: 992px) {
+    .about-section {
+        padding-top: 25px;
+    }
+
+    .page-title {
+        margin-bottom: 25px;
+    }
+
+    .crea-bg-text {
+        transform: rotateZ(-90deg);
+        transform-origin: right;
+        width: 100%;
+        top: -125px;
+        right: 45px;
+    }
+}
