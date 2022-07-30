@@ -1845,6 +1845,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-the-mask */ "./node_modules/vue-the-mask/dist/vue-the-mask.js");
+/* harmony import */ var vue_the_mask__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_the_mask__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1910,16 +1912,95 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+Vue.use((vue_the_mask__WEBPACK_IMPORTED_MODULE_0___default()));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      preloader: true
+      preloader: false,
+      form: false,
+      name: '',
+      phone: '+7',
+      date: '',
+      time: ''
     };
   },
   mounted: function mounted() {
     console.log('about mounted.');
   },
-  methods: {}
+  methods: {
+    sendForm: function sendForm() {
+      var self = this;
+      self.preloader = true;
+      axios.post('/send-booking', {
+        'name': self.name,
+        'phone': self.phone,
+        'date': self.date,
+        'time': self.time
+      }).then(function (response) {
+        self.form = 'send';
+        console.log(response.data);
+        setTimeout(function () {
+          UIkit.modal('#modal-send').hide();
+          self.preloader = false;
+        }, 5000);
+      })["catch"](function (error) {
+        self.form = 'error';
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -2696,13 +2777,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 Vue.use((vue_the_mask__WEBPACK_IMPORTED_MODULE_1___default()));
@@ -2853,12 +2927,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    servicesComp: false
+    servicesComp: ''
   },
   data: function data() {
     return {
       sComp: this.servicesComp,
-      preloader: true,
+      preloader: false,
       services: []
     };
   },
@@ -60331,97 +60405,300 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("section", [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
+    _c("div", { attrs: { id: "modal-send", "uk-modal": "" } }, [
+      _c("div", { staticClass: "uk-modal-dialog uk-modal-body" }, [
+        _c("img", {
+          staticClass: "modal-instruments",
+          attrs: { src: "/img/instruments.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "modal-instruments-mobile instrument-one d-lg-none",
+          attrs: { src: "/img/instrument1.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "modal-instruments-mobile instrument-two d-lg-none",
+          attrs: { src: "/img/instrument2.png", alt: "" }
+        }),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "uk-modal-close-default",
+          attrs: { "uk-close": "" }
+        }),
+        _vm._v(" "),
+        !_vm.form
+          ? _c("div", { staticClass: "form-wrap" }, [
+              _c("h4", { staticClass: "uk-modal-title" }, [
+                _vm._v("Записаться на прием")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "name" } }, [
+                  _vm._v("Имя, Фамилия")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.name,
+                      expression: "name"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "text", id: "name" },
+                  domProps: { value: _vm.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.name = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "phone" } }, [_vm._v("Телефон")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.phone,
+                      expression: "phone"
+                    },
+                    {
+                      name: "mask",
+                      rawName: "v-mask",
+                      value: "+7 (###) ###-##-##",
+                      expression: "'+7 (###) ###-##-##'"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "tel", id: "phone" },
+                  domProps: { value: _vm.phone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.phone = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "date" } }, [_vm._v("Дата")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.date,
+                      expression: "date"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "date", id: "date" },
+                  domProps: { value: _vm.date },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.date = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "time" } }, [_vm._v("Время")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.time,
+                      expression: "time"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "time", id: "time" },
+                  domProps: { value: _vm.time },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.time = $event.target.value
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "" } }),
+                _vm._v(" "),
+                !_vm.preloader
+                  ? _c(
+                      "div",
+                      {
+                        staticClass: "send-btn",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.sendForm.apply(null, arguments)
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            Отправить\n                        "
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.preloader
+                  ? _c("div", { staticClass: "send-btn" }, [_vm._m(3)])
+                  : _vm._e()
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.form === "error"
+          ? _c("div", { staticClass: "modal-error" }, [
+              _vm._v(
+                "\n                    Упс... Что-то пошло не так, Вы можете связаться с нами по телефону "
+              ),
+              _c("br"),
+              _vm._v(" "),
+              _c("a", { attrs: { href: "tel:+79180818181" } }, [
+                _vm._v("+7 (918) 081-81-81")
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(
+                "\n                    и записаться на прием.\n                "
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.form === "send"
+          ? _c("div", { staticClass: "modal-error" }, [
+              _vm._v(
+                "\n                    Спасибо! Администратор свяжется с Вами в ближайшее время для уточнения деталей.\n                "
+              )
+            ])
+          : _vm._e()
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", [
-      _c("section", { staticClass: "about-section section-padding" }, [
-        _c("img", {
-          staticClass: "crea-bg-text",
-          attrs: { src: "/img/crea-bg-text.png", alt: "" }
-        }),
+    return _c("section", { staticClass: "about-section section-padding" }, [
+      _c("img", {
+        staticClass: "crea-bg-text",
+        attrs: { src: "/img/crea-bg-text.png", alt: "" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12" })
+        ]),
         _vm._v(" "),
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-12" })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-12 col-lg-5" }, [
-              _c("div", { staticClass: "about-text-wrap" }, [
-                _c(
-                  "h3",
-                  {
-                    staticClass: "page-title",
-                    staticStyle: { color: "var(--accent-color)" }
-                  },
-                  [
-                    _vm._v(
-                      "\n                            О нас\n                        "
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("p", { staticClass: "second-sec-text about-text" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12 col-lg-5" }, [
+            _c("div", { staticClass: "about-text-wrap" }, [
+              _c(
+                "h3",
+                {
+                  staticClass: "page-title",
+                  staticStyle: { color: "var(--accent-color)" }
+                },
+                [
                   _vm._v(
-                    "\n                            Клиника CREADENT предоставляет весь спектр стоматологических услуг.\n                            Для каждого пациента мы подбираем индивидуальный комплексный план лечения зубов, с учетом всех имеющихся у пациента стоматологических патологий. Взаимодействие врачей стоматологов из разных специализаций, дают возможность проведения смежной консультации в одно посещение.\n                        "
+                    "\n                                О нас\n                            "
                   )
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "second-sec-text about-text" }, [
+                ]
+              ),
+              _vm._v(" "),
+              _c("p", { staticClass: "second-sec-text about-text" }, [
+                _vm._v(
+                  "\n                                Клиника CREADENT предоставляет весь спектр стоматологических услуг.\n                                Для каждого пациента мы подбираем индивидуальный комплексный план лечения зубов, с учетом всех имеющихся у пациента стоматологических патологий. Взаимодействие врачей стоматологов из разных специализаций, дают возможность проведения смежной консультации в одно посещение.\n                            "
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "second-sec-text about-text mt-auto" }, [
+                _vm._v(
+                  "\n                                В клинике CREADENT есть собственная зуботехническая лаборатория, которая позволяет сократить сроки при лечении.\n                            "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "main-offer__btn mt-auto mb-5 mb-lg-0",
+                  attrs: { "uk-toggle": "target: #modal-send" }
+                },
+                [
                   _vm._v(
-                    "\n                            В клинике CREADENT есть собственная зуботехническая лаборатория, которая позволяет сократить сроки при лечении.\n                        "
+                    "\n                                Записаться на прием\n                            "
                   )
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-12 col-lg-6 d-none d-lg-block ml-auto" },
-              [
-                _c("img", {
-                  staticClass: "about-img",
-                  attrs: { src: "/img/about-img1.png", alt: "" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "interval-lines-wrap d-none d-lg-flex mt-5" },
-                  [
-                    _c("span", {
-                      staticClass: "interval-line interval-line-one mr-5"
-                    }),
-                    _vm._v(" "),
-                    _c("span", {
-                      staticClass: "interval-line interval-line-two"
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _c("img", {
-                  staticClass: "d-none d-lg-flex mt-3",
-                  attrs: { src: "/img/about-img2.png", alt: "" }
-                })
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row mt-3 mt-lg-5" }, [
-            _c("div", { staticClass: "col-12" }, [
-              _c("img", { attrs: { src: "/img/about-page.jpg", alt: "" } })
+                ]
+              )
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "row mt-5" }, [
+          _c("div", { staticClass: "col-12 col-lg-6 ml-auto" }, [
+            _c("img", {
+              staticClass: "d-flex ml-auto",
+              attrs: { src: "/img/second-sec2.jpg", alt: "" }
+            }),
+            _vm._v(" "),
+            _c("img", {
+              staticClass: "d-flex ml-auto mt-3",
+              attrs: { src: "/img/about-page.jpg", alt: "" }
+            })
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "section",
+      { staticClass: "about-page-section section-padding" },
+      [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-12" }, [
-              _c("h3", { staticClass: "page-title" }, [
+              _c("h3", { staticClass: "page-title about-title" }, [
                 _vm._v(
-                  "\n                        Применяем цифровые технологии\n                    "
+                  "\n                            Применяем цифровые технологии\n                        "
                 )
               ])
             ])
@@ -60434,14 +60711,14 @@ var staticRenderFns = [
                 { staticClass: "second-sec-text about-text mt-4 mt-lg-0" },
                 [
                   _vm._v(
-                    "\n                        Наши специалисты повышают свою квалификацию, посещают различные обучения, участвуют в тренингах и семинарах.\n                    "
+                    "\n                            Наши специалисты повышают свою квалификацию, посещают различные обучения, участвуют в тренингах и семинарах.\n                        "
                   )
                 ]
               ),
               _vm._v(" "),
               _c("p", { staticClass: "second-sec-text about-text mt-5" }, [
                 _vm._v(
-                  "\n                        Клиника оборудована 3D сканером Cerec, радиовизиографом, который позволяет провести точную диагностику уже на первой консультации.\n                    "
+                  "\n                            Клиника оборудована 3D сканером Cerec, радиовизиографом, который позволяет провести точную диагностику уже на первой консультации.\n                        "
                 )
               ])
             ]),
@@ -60452,15 +60729,33 @@ var staticRenderFns = [
                 { staticClass: "second-sec-text about-text mt-5 mt-lg-0" },
                 [
                   _vm._v(
-                    "\n                        Одна из лучших технологий CAD/CAM создает компьютерное моделирование и дает неограниченные возможности в протезировании, позволяя получить максимально точный и качественный результат.\n                    "
+                    "\n                            Одна из лучших технологий CAD/CAM создает компьютерное моделирование и дает неограниченные возможности в протезировании, позволяя получить максимально точный и качественный результат.\n                        "
                   )
                 ]
               )
             ])
           ])
         ])
-      ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "mb-5" }, [
+      _c("img", { attrs: { src: "/img/clinic.jpg", alt: "" } })
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "spinner-grow", attrs: { role: "status" } },
+      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+    )
   }
 ]
 render._withStripped = true
@@ -60960,21 +61255,6 @@ var render = function() {
       [
         _vm._m(0),
         _vm._v(" "),
-        _c("img", {
-          staticClass: "mobile-bg-img",
-          attrs: { src: "/img/main-bg-mobile.jpg", alt: "" }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          staticClass: "mobile-bg-img tablet-bg d-md-none",
-          attrs: { src: "/img/main-bg-tablet.jpg", alt: "" }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          staticClass: "mobile-bg-img d-none d-md-flex d-lg-none",
-          attrs: { src: "/img/main-bg.jpg", alt: "" }
-        }),
-        _vm._v(" "),
         _vm._m(1),
         _vm._v(" "),
         _c("img", {
@@ -61009,70 +61289,98 @@ var render = function() {
           [
             _vm._m(3),
             _vm._v(" "),
-            _vm.servicesComp
-              ? _c("div", { staticClass: "row mb-3" }, [
-                  _c("div", { staticClass: "col-12" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "back-btn",
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            _vm.servicesComp = false
-                          }
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.servicesComp,
+                    expression: "servicesComp"
+                  }
+                ],
+                staticClass: "row mb-3"
+              },
+              [
+                _c("div", { staticClass: "col-12" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "back-btn",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.servicesComp = ""
                         }
-                      },
-                      [
-                        _c("span", {
-                          staticClass: "d-flex mr-2",
-                          attrs: { "uk-icon": "icon: reply;" }
+                      }
+                    },
+                    [
+                      _c("span", {
+                        staticClass: "d-flex mr-2",
+                        attrs: { "uk-icon": "icon: reply;" }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "back-btn__text" }, [
+                        _vm._v("Назад")
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("Transition", [
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.servicesComp,
+                      expression: "!servicesComp"
+                    }
+                  ],
+                  staticClass: "row"
+                },
+                _vm._l(_vm.services, function(service) {
+                  return _c(
+                    "div",
+                    {
+                      staticClass: "col-12 col-lg-6 col-xl-4",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.selectService(service.dataPath)
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "service-card" }, [
+                        _c("img", {
+                          staticClass: "service-card__bg",
+                          attrs: { src: service.img, alt: "" }
                         }),
                         _vm._v(" "),
-                        _c("span", { staticClass: "back-btn__text" }, [
-                          _vm._v("Назад")
+                        _c("h3", { staticClass: "service-card__text" }, [
+                          _vm._v(_vm._s(service.title))
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "service-card__btn" }, [
+                          _c("span", {
+                            attrs: {
+                              "uk-icon": "icon: chevron-right; ratio: 1.3;"
+                            }
+                          })
                         ])
-                      ]
-                    )
-                  ])
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            !_vm.servicesComp
-              ? _c(
-                  "div",
-                  { staticClass: "row uk-animation-scale-up" },
-                  _vm._l(_vm.services, function(service) {
-                    return _c(
-                      "div",
-                      {
-                        staticClass: "col-12 col-lg-6 col-xl-4",
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.selectService(service.dataPath)
-                          }
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "service-card" }, [
-                          _c("img", {
-                            staticClass: "service-card__bg",
-                            attrs: { src: service.img, alt: "" }
-                          }),
-                          _vm._v(" "),
-                          _c("h3", { staticClass: "service-card__text" }, [
-                            _vm._v(_vm._s(service.title))
-                          ]),
-                          _vm._v(" "),
-                          _vm._m(4, true)
-                        ])
-                      ]
-                    )
-                  }),
-                  0
-                )
-              : _vm._e(),
+                      ])
+                    ]
+                  )
+                }),
+                0
+              )
+            ]),
             _vm._v(" "),
             _vm.servicesComp
               ? _c("services-component", {
@@ -61091,9 +61399,9 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _vm._m(5),
+    _vm._m(4),
     _vm._v(" "),
-    _vm._m(6),
+    _vm._m(5),
     _vm._v(" "),
     _c("div", { attrs: { id: "modal-send", "uk-modal": "" } }, [
       _c("div", { staticClass: "uk-modal-dialog uk-modal-body" }, [
@@ -61259,7 +61567,7 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.preloader
-                  ? _c("div", { staticClass: "send-btn" }, [_vm._m(7)])
+                  ? _c("div", { staticClass: "send-btn" }, [_vm._m(6)])
                   : _vm._e()
               ])
             ])
@@ -61366,7 +61674,7 @@ var staticRenderFns = [
             }),
             _vm._v(" "),
             _c("div", { staticClass: "col-12 col-lg-5 order-2 order-lg-1" }, [
-              _c("img", { attrs: { src: "/img/second-sec.png", alt: "" } })
+              _c("img", { attrs: { src: "/img/second-sec2.jpg", alt: "" } })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-12 col-lg-7 order-1 order-lg-2" }, [
@@ -61406,14 +61714,6 @@ var staticRenderFns = [
           ]
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "service-card__btn" }, [
-      _c("span", { attrs: { "uk-icon": "icon: chevron-right; ratio: 1.3;" } })
     ])
   },
   function() {
@@ -61499,24 +61799,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "col-12 col-lg-6 ml-auto" }, [
             _c("img", {
               staticClass: "about-img d-flex ml-auto",
-              attrs: { src: "/img/about-img1.png", alt: "" }
-            }),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "interval-lines-wrap d-none d-lg-flex mt-5" },
-              [
-                _c("span", {
-                  staticClass: "interval-line interval-line-one mr-5"
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "interval-line interval-line-two" })
-              ]
-            ),
-            _vm._v(" "),
-            _c("img", {
-              staticClass: "d-none d-lg-flex mt-3 ml-auto",
-              attrs: { src: "/img/about-img2.png", alt: "" }
+              attrs: { src: "/img/second-sec.jpg", alt: "" }
             })
           ])
         ])
@@ -61663,7 +61946,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("section", { attrs: { id: "sCompSec" } }, [
-    _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row services-animation" }, [
       _c("div", { staticClass: "col-12" }, [
         _c(
           "div",

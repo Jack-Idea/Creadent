@@ -30,13 +30,13 @@
     <!-- CSS -->
     {{--    <link rel="icon" href="{{ asset('css/favicon.png') }}" type="image/x-icon"/>--}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/glob.css?v=1') }}">
+    <link rel="stylesheet" href="{{ asset('css/glob.css?v=13') }}">
 @yield('css')
 
 </head>
 <body>
 
-<div id="app">
+<div id="app" style="overflow-x: hidden;">
     <h1 hidden></h1>
     @include('layouts.header')
     @yield('main')
@@ -46,7 +46,7 @@
 
 
 <!-- Scripts -->
-<script src="{{ asset('js/app.js?v=1') }}" defer></script>
+<script src="{{ asset('js/app.js?v=13') }}" defer></script>
 
 </body>
 </html>

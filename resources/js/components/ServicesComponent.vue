@@ -1,6 +1,6 @@
 <template>
     <section id="sCompSec">
-        <div class="row">
+        <div class="row services-animation">
             <div class="col-12">
                 <div class="services-wrap">
                     <div class="service-title">
@@ -27,11 +27,11 @@
 
 <script>
     export default {
-        props: { servicesComp: false },
+        props: { servicesComp: '' },
         data() {
             return {
                 sComp: this.servicesComp,
-                preloader: true,
+                preloader: false,
                 services: []
             }
         },

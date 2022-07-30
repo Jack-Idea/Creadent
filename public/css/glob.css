@@ -29,7 +29,6 @@ only screen and (min-device-pixel-ratio: 2) {
 body {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
-    /*background: #e9e9e9;*/
     background: #fff;
     color: var(--font-color);
     overflow-x: hidden;
@@ -40,6 +39,7 @@ section {
     margin-left: auto;
     margin-right: auto;
     box-sizing: border-box;
+    /*overflow-x: hidden;*/
 }
 
 .container {
@@ -347,6 +347,7 @@ a:hover {
     position: relative;
     animation: 1s title ease-in-out forwards;
     transform: translateX(-2000px);
+    animation-delay: .1s;
 }
 
 @keyframes title {
@@ -510,6 +511,17 @@ a:hover {
 
 /* THIRD SECTION */
 
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+
 .third-section {
     background: var(--accent-color);
     position: relative;
@@ -521,6 +533,17 @@ a:hover {
     display: flex;
     top: -100px;
     right: 0;
+}
+
+.services-animation {
+    animation: 1s serviceAnim ease-in-out forwards;
+    opacity: 0;
+}
+
+@keyframes serviceAnim {
+    100% {
+        opacity: 1;
+    }
 }
 
 .service-card {
@@ -794,6 +817,7 @@ a:hover {
 }
 
 @media screen and (max-width: 449px) {
+
     .tablet-bg {
         display: none;
     }
@@ -823,6 +847,7 @@ a:hover {
 }
 
 @media screen and (max-width: 768px) {
+
     .header-section {
         height: auto;
         background: rgba(255,255,255,0);
@@ -834,13 +859,29 @@ a:hover {
         transition: .5s;
     }
 
+    .services-bg {
+        width: 30%;
+    }
+
     .service-card {
         height: 175px;
+    }
+
+    .service-card:hover {
+        transform: scale(1);
     }
 
     .service-card__text {
         text-transform: uppercase;
         font-size: 25px;
+    }
+
+    .services-points {
+        width: 6%;
+    }
+
+    .services-points_blue {
+        width: 6%;
     }
 
     .timelist {
@@ -849,6 +890,7 @@ a:hover {
 }
 
 @media screen and (max-width: 992px) {
+
     .form-wrap {
         display: flex;
         flex-direction: column;
@@ -933,7 +975,9 @@ a:hover {
     .hero {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
+        padding-top: calc(80px + 10%);
+        padding-bottom: 15%;
     }
 
     .mobile-bg-img {
@@ -951,16 +995,6 @@ a:hover {
         width: 100%;
         max-width: 310px;
         margin-top: 0;
-    }
-
-    .mobile-bg-sec {
-        /*!*position: absolute;*!*/
-        /*top: 5%;*/
-        /*left: 0;*/
-        display: flex;
-        background: url("../img/main-bg-mobile2.jpg") no-repeat top center / contain;
-        width: 100%;
-        height: 100vh;
     }
 
     .main-offer {
@@ -993,6 +1027,7 @@ a:hover {
 
     .second-sec-text-wrap {
         justify-content: end;
+        margin-left: auto;
     }
 
     .second-sec-text {
@@ -1003,6 +1038,8 @@ a:hover {
     .second-sec-text-mobile {
         width: 80%;
         margin-bottom: 32px;
+        display: flex;
+        margin-left: auto;
     }
 
     .about-section {
@@ -1011,9 +1048,9 @@ a:hover {
 
     .about-img {
         display: flex;
-        margin-left: -8%;
-        width: 108%;
-        max-width: 150%;
+        /*margin-left: -8%;*/
+        /*width: 108%;*/
+        /*max-width: 150%;*/
     }
 
     .third-section {
@@ -1142,7 +1179,29 @@ a:hover {
 }
 
 @media screen and (max-width: 600px) {
+    .hero {
+        background: url("../img/main-bg-mobile.jpg") no-repeat center left / cover;
+    }
 
+    .services-bg {
+        width: 50%;
+        margin-top: 20px;
+    }
+
+    .services-points {
+        width: 6%;
+    }
+
+    .services-points_blue {
+        width: 6%;
+        margin-top: 0;
+    }
+
+    .employees-points {
+        width: 20%;
+        right: 3%;
+        top: -25px;
+    }
 }
 
 

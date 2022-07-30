@@ -5,7 +5,6 @@
             <div class="container hero-section">
                 <div class="row">
                     <div class="col-12">
-<!--                        <img src="/img/main-bg.jpg" class="d-none d-lg-flex main-bg" alt="">-->
                         <div class="main-offer">
                             <h1 class="main-offer__title">
                                 Стоматологическая <br> клиника <span>creadent</span>
@@ -20,9 +19,6 @@
                     </div>
                 </div>
             </div>
-            <img src="/img/main-bg-mobile.jpg" class="mobile-bg-img" alt="">
-            <img src="/img/main-bg-tablet.jpg" class="mobile-bg-img tablet-bg d-md-none" alt="">
-            <img src="/img/main-bg.jpg" class="mobile-bg-img d-none d-md-flex d-lg-none" alt="">
             <div class="mobile-main-btn d-flex d-lg-none" uk-toggle="target: #modal-send">
                 <div class="main-offer__btn">
                     Записаться на прием
@@ -36,7 +32,7 @@
                 <div class="row second-sec-row">
                     <img src="/img/crea-bg-text.png" class="crea-bg-text our-bg" alt="">
                     <div class="col-12 col-lg-5 order-2 order-lg-1">
-                        <img src="/img/second-sec.png" alt="">
+                        <img src="/img/second-sec2.jpg" alt="">
                     </div>
                     <div class="col-12 col-lg-7 order-1 order-lg-2">
                         <div class="second-sec-text-wrap">
@@ -59,23 +55,25 @@
                         </h3>
                     </div>
                 </div>
-                <div v-if="servicesComp" class="row mb-3">
+                <div v-show="servicesComp" class="row mb-3">
                     <div class="col-12">
-                        <div @click.prevent="servicesComp = false" class="back-btn">
+                        <div @click.prevent="servicesComp = ''" class="back-btn">
                             <span uk-icon="icon: reply;" class="d-flex mr-2"></span>
                             <span class="back-btn__text">Назад</span>
                         </div>
                     </div>
                 </div>
-                <div v-if="!servicesComp" class="row uk-animation-scale-up">
-                    <div @click.prevent="selectService(service.dataPath)" v-for="service in services" class="col-12 col-lg-6 col-xl-4">
-                        <div class="service-card">
-                            <img :src="service.img" class="service-card__bg" alt="">
-                            <h3 class="service-card__text">{{ service.title }}</h3>
-                            <span class="service-card__btn"><span uk-icon="icon: chevron-right; ratio: 1.3;"></span></span>
+                <Transition>
+                    <div v-show="!servicesComp" class="row">
+                        <div @click.prevent="selectService(service.dataPath)" v-for="service in services" class="col-12 col-lg-6 col-xl-4">
+                            <div class="service-card">
+                                <img :src="service.img" class="service-card__bg" alt="">
+                                <h3 class="service-card__text">{{ service.title }}</h3>
+                                <span class="service-card__btn"><span uk-icon="icon: chevron-right; ratio: 1.3;"></span></span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </Transition>
                 <services-component :servicesComp="servicesComp" v-if="servicesComp" class="uk-animation-scale-up"></services-component>
             </div>
             <img src="/img/services-points1.png" class="services-bg services-points" alt="">
@@ -116,12 +114,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 ml-auto">
-                        <img src="/img/about-img1.png" class="about-img d-flex ml-auto" alt="">
-                        <div class="interval-lines-wrap d-none d-lg-flex mt-5">
-                            <span class="interval-line interval-line-one mr-5"></span>
-                            <span class="interval-line interval-line-two"></span>
-                        </div>
-                        <img src="/img/about-img2.png" class="d-none d-lg-flex mt-3 ml-auto" alt="">
+                        <img src="/img/second-sec.jpg" class="about-img d-flex ml-auto" alt="">
                     </div>
                 </div>
             </div>

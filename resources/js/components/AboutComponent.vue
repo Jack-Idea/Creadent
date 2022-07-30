@@ -17,28 +17,30 @@
                                 Клиника CREADENT предоставляет весь спектр стоматологических услуг.
                                 Для каждого пациента мы подбираем индивидуальный комплексный план лечения зубов, с учетом всех имеющихся у пациента стоматологических патологий. Взаимодействие врачей стоматологов из разных специализаций, дают возможность проведения смежной консультации в одно посещение.
                             </p>
-                            <p class="second-sec-text about-text">
+<!--                            <div class="interval-lines-wrap mt-auto">-->
+<!--                                <span class="interval-line interval-line-one ml-5"></span>-->
+<!--                                <span class="interval-line interval-line-two ml-0"></span>-->
+<!--                            </div>-->
+                            <p class="second-sec-text about-text mt-auto">
                                 В клинике CREADENT есть собственная зуботехническая лаборатория, которая позволяет сократить сроки при лечении.
                             </p>
+                            <div uk-toggle="target: #modal-send" class="main-offer__btn mt-auto mb-5 mb-lg-0">
+                                Записаться на прием
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6 d-none d-lg-block ml-auto">
-                        <img src="/img/about-img1.png" class="about-img" alt="">
-                        <div class="interval-lines-wrap d-none d-lg-flex mt-5">
-                            <span class="interval-line interval-line-one mr-5"></span>
-                            <span class="interval-line interval-line-two"></span>
-                        </div>
-                        <img src="/img/about-img2.png" class="d-none d-lg-flex mt-3" alt="">
+                    <div class="col-12 col-lg-6 ml-auto">
+                        <img src="/img/second-sec2.jpg" class="d-flex ml-auto" alt="">
+                        <img src="/img/about-page.jpg" class="d-flex ml-auto mt-3" alt="">
                     </div>
                 </div>
-                <div class="row mt-3 mt-lg-5">
+            </div>
+        </section>
+        <section class="about-page-section section-padding">
+            <div class="container">
+                <div class="row">
                     <div class="col-12">
-                        <img src="/img/about-page.jpg" alt="">
-                    </div>
-                </div>
-                <div class="row mt-5">
-                    <div class="col-12">
-                        <h3 class="page-title">
+                        <h3 class="page-title about-title">
                             Применяем цифровые технологии
                         </h3>
                     </div>
@@ -60,20 +62,99 @@
                 </div>
             </div>
         </section>
+        <section class="mb-5">
+            <img src="/img/clinic.jpg" alt="">
+        </section>
+        <!-- MODAL SEND -->
+        <div id="modal-send" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+                <img src="/img/instruments.png" class="modal-instruments" alt="">
+                <img src="/img/instrument1.png" class="modal-instruments-mobile instrument-one d-lg-none" alt="">
+                <img src="/img/instrument2.png" class="modal-instruments-mobile instrument-two d-lg-none" alt="">
+                <div class="uk-modal-close-default" uk-close></div>
+                <div v-if="!form" class="form-wrap">
+                    <h4 class="uk-modal-title">Записаться на прием</h4>
+                    <div class="form-group">
+                        <label for="name">Имя, Фамилия</label>
+                        <input v-model="name" type="text" class="form-control" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input v-model="phone" v-mask="'+7 (###) ###-##-##'" type="tel" class="form-control" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Дата</label>
+                        <input v-model="date" type="date" class="form-control" id="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Время</label>
+                        <input v-model="time" type="time" class="form-control" id="time">
+                    </div>
+                    <div class="form-group">
+                        <label for=""></label>
+                        <div v-if="!preloader" @click.prevent="sendForm" class="send-btn">
+                            Отправить
+                        </div>
+                        <div v-if="preloader" class="send-btn">
+                            <div class="spinner-grow" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="form === 'error'" class="modal-error">
+                    Упс... Что-то пошло не так, Вы можете связаться с нами по телефону <br>
+                    <a href="tel:+79180818181">+7 (918) 081-81-81</a> <br>
+                    и записаться на прием.
+                </div>
+                <div v-if="form === 'send'" class="modal-error">
+                    Спасибо! Администратор свяжется с Вами в ближайшее время для уточнения деталей.
+                </div>
+            </div>
+        </div>
     </section>
 </template>
 
 <script>
+    import VueTheMask from 'vue-the-mask'
+    Vue.use(VueTheMask)
     export default {
         data() {
             return {
-                preloader: true,
+                preloader: false,
+                form: false,
+                name: '',
+                phone: '+7',
+                date: '',
+                time: '',
             }
         },
         mounted() {
             console.log('about mounted.')
         },
         methods: {
+            sendForm() {
+                let self = this
+                self.preloader = true
+                axios
+                    .post('/send-booking', {
+                        'name': self.name,
+                        'phone': self.phone,
+                        'date': self.date,
+                        'time': self.time
+                    })
+                    .then(function (response) {
+                        self.form = 'send'
+                        console.log(response.data)
+                        setTimeout(function () {
+                            UIkit.modal('#modal-send').hide()
+                            self.preloader = false
+                        }, 5000)
+                    })
+                    .catch(function (error) {
+                        self.form = 'error'
+                    })
+            }
         }
     }
 </script>

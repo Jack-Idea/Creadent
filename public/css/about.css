@@ -1,6 +1,21 @@
 .crea-bg-text {
-    margin-top: 100px;
+    margin-top: 50px;
+    right: 3%;
 }
+
+.about-text-wrap {
+    justify-content: start;
+}
+
+.about-page-section {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+.about-title {
+    color: #fff;
+}
+
 
 @media screen and (max-width: 992px) {
     .about-section {

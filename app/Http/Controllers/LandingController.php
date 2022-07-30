@@ -29,7 +29,7 @@ class LandingController extends Controller
 
         Mail::send('layouts.callback-mail',['name' => $name, 'phone' => $phone, 'date' => $date, 'time' => $time],
             function ($message) use ($name, $phone, $date, $time) {
-                $message->to('nvrsk.sport@gmail.com', 'Управление спорта')->subject('Новое обращение!!!');
+                $message->to('nvrsk.sport@gmail.com', 'CreaDent')->subject('Новое Новое запись!!!');
                 $message->from('zerrenderwork@yandex.ru', 'CreaDent');
             });
 
