@@ -32,9 +32,6 @@
                                 <a href="/" class="mobile-menu__logo">
                                     <img :src="logo" alt="" class="logo">
                                 </a>
-                                <h2 class="footer-title__item mobile-menu__logo-text">
-                                    Архитектурно-строительный <br> комплекс &laquo;инвест&raquo;
-                                </h2>
                             </div>
 
                         </div>

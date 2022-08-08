@@ -37,7 +37,7 @@
                     <div class="col-12 col-lg-7 order-1 order-lg-2">
                         <div class="second-sec-text-wrap">
                             <p class="second-sec-text second-sec-text-mobile">
-                                Наша клиника обеспечивает комфорт пациента во время стоматологических процедур, заботясь о каждом пациенте. Светлые кабинеты, приятная обстановка, отличный сервис, а главное вы забудете, что находитесь в стоматологии и сможете расслабиться.
+                                Наша клиника обеспечивает комфорт во время стоматологических процедур, заботясь о каждом пациенте. Светлые кабинеты, приятная обстановка, отличный сервис, а главное вы забудете, что находитесь в стоматологии и сможете расслабиться.
                             </p>
                         </div>
                     </div>
@@ -230,15 +230,15 @@
                 services: [
                     {
                         id: 1,
-                        title: 'Терапия',
-                        dataPath: '/js/terapy.json',
-                        img: '/img/terapy2.png'
+                        title: 'Консултация и анестезия',
+                        dataPath: '/js/kids.json',
+                        img: '/img/kids2.png'
                     },
                     {
                         id: 2,
-                        title: 'Детская стоматология',
-                        dataPath: '/js/kids.json',
-                        img: '/img/kids2.png'
+                        title: 'Терапия',
+                        dataPath: '/js/terapy.json',
+                        img: '/img/terapy2.png'
                     },
                     {
                         id: 3,
@@ -254,13 +254,13 @@
                     },
                     {
                         id: 5,
-                        title: 'Ортодонтия',
+                        title: 'Профилактика и гигиена',
                         dataPath: '/js/orthodontics.json',
                         img: '/img/orthodontics2.png'
                     },
                     {
                         id: 6,
-                        title: 'Протезирование',
+                        title: 'Ортопедия',
                         dataPath: '/js/prosthetics.json',
                         img: '/img/prosthetics2.png'
                     }

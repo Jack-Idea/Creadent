@@ -67,7 +67,7 @@ textarea:focus {
 }
 
 input {
-    border-radius: 30px !important;
+    border-radius: 8px !important;
     max-width: 500px;
     background: transparent !important;
 }
@@ -151,7 +151,7 @@ a:hover {
     max-width: 500px;
     background: var(--accent-color);
     color: #fff;
-    border-radius: 30px;
+    border-radius: 10px;
     text-transform: uppercase;
     font-weight: 500;
 }
@@ -374,8 +374,8 @@ a:hover {
     background: var(--accent-color);
     width: 100%;
     max-width: 320px;
-    height: 80px;
-    border-radius: 40px;
+    height: 60px;
+    border-radius: 10px;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -401,7 +401,7 @@ a:hover {
     display: flex;
     position: absolute;
     width: 20%;
-    left: 0;
+    left: -75px;
     bottom: -10%;
     z-index: 0;
 }
@@ -676,8 +676,8 @@ a:hover {
 
 .service-info__description {
     display: flex;
-    text-transform: uppercase;
-    font-weight: 500;
+    /*text-transform: uppercase;*/
+    font-weight: 400;
     justify-content: space-between;
     border-bottom: 1px solid #d9d9d9;
     margin-top: 1rem;

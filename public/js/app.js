@@ -1963,7 +1963,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 Vue.use((vue_the_mask__WEBPACK_IMPORTED_MODULE_0___default()));
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2390,21 +2389,21 @@ __webpack_require__.r(__webpack_exports__);
         id: 1,
         jobTitle: 'Генеральный директор',
         name: 'Симиониди Иван Ставриевич',
-        speciality: 'стоматолог-хирург, имплантолог',
+        speciality: 'стоматолог-ортопед, хирург, терапевт, имплантолог',
         exp: 'более 15 лет',
         img: '/img/main-dr3.jpg'
       }, {
         id: 2,
-        jobTitle: 'Медицинская сестра',
+        jobTitle: 'Ассистент врача-стоматолога',
         name: 'Кузнецова Анна Алексеевна',
-        speciality: 'стоматолог-хирург, имплантолог',
+        speciality: 'гигиенист',
         exp: 'более 15 лет',
         img: '/img/sestra3.jpg'
       }, {
         id: 3,
         jobTitle: 'Администратор',
         name: 'Селиванова Алина Александровна',
-        speciality: 'стоматолог-хирург, имплантолог',
+        speciality: '',
         exp: 'более 15 лет',
         img: '/img/administrator3.jpg'
       }]
@@ -2465,9 +2464,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _img_main_logo_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../img/main-logo.png */ "./public/img/main-logo.png");
-//
-//
-//
 //
 //
 //
@@ -2798,14 +2794,14 @@ Vue.use((vue_the_mask__WEBPACK_IMPORTED_MODULE_1___default()));
       time: '',
       services: [{
         id: 1,
+        title: 'Консултация и анестезия',
+        dataPath: '/js/kids.json',
+        img: '/img/kids2.png'
+      }, {
+        id: 2,
         title: 'Терапия',
         dataPath: '/js/terapy.json',
         img: '/img/terapy2.png'
-      }, {
-        id: 2,
-        title: 'Детская стоматология',
-        dataPath: '/js/kids.json',
-        img: '/img/kids2.png'
       }, {
         id: 3,
         title: 'Имплантация',
@@ -2818,12 +2814,12 @@ Vue.use((vue_the_mask__WEBPACK_IMPORTED_MODULE_1___default()));
         img: '/img/surgery2.png'
       }, {
         id: 5,
-        title: 'Ортодонтия',
+        title: 'Профилактика и гигиена',
         dataPath: '/js/orthodontics.json',
         img: '/img/orthodontics2.png'
       }, {
         id: 6,
-        title: 'Протезирование',
+        title: 'Ортопедия',
         dataPath: '/js/prosthetics.json',
         img: '/img/prosthetics2.png'
       }],
@@ -60645,13 +60641,13 @@ var staticRenderFns = [
               _vm._v(" "),
               _c("p", { staticClass: "second-sec-text about-text" }, [
                 _vm._v(
-                  "\n                                Клиника CREADENT предоставляет весь спектр стоматологических услуг.\n                                Для каждого пациента мы подбираем индивидуальный комплексный план лечения зубов, с учетом всех имеющихся у пациента стоматологических патологий. Взаимодействие врачей стоматологов из разных специализаций, дают возможность проведения смежной консультации в одно посещение.\n                            "
+                  "\n                                Клиника CREADENT оснащена самым современным и технологически новым оборудованием. Мы постоянно следим за инновациями в сфере стоматологических услуг и инвестируем в новейшие технологии для удобства наших пациентов.\n                            "
                 )
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "second-sec-text about-text mt-auto" }, [
                 _vm._v(
-                  "\n                                В клинике CREADENT есть собственная зуботехническая лаборатория, которая позволяет сократить сроки при лечении.\n                            "
+                  "\n                                CREADENT поддерживает международный стандарт обслуживания. В первую очередь пациент для нас друг-партнёр. Клиника удовлетворяет все потребности своих клиентов и обеспечивает комфортное лечение. Мы фокусируемся на выстраивании долгосрочных отношений, поэтому забота о наших пациентах является нашим единственным приоритетом.\n                            "
                 )
               ]),
               _vm._v(" "),
@@ -60912,15 +60908,23 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("p", { staticClass: "employ-info__name" }, [
-                      _vm._v(
-                        "\n                                    " +
-                          _vm._s(employ.jobTitle) +
-                          ", " +
-                          _vm._s(employ.speciality) +
-                          "\n                                "
-                      )
-                    ])
+                    _c(
+                      "p",
+                      { staticClass: "employ-info__name" },
+                      [
+                        _vm._v(
+                          "\n                                    " +
+                            _vm._s(employ.jobTitle)
+                        ),
+                        employ.speciality ? [_vm._v(",")] : _vm._e(),
+                        _vm._v(
+                          " " +
+                            _vm._s(employ.speciality) +
+                            "\n                                "
+                        )
+                      ],
+                      2
+                    )
                   ])
                 ])
               ])
@@ -61173,9 +61177,7 @@ var render = function() {
                           attrs: { src: _vm.logo, alt: "" }
                         })
                       ]
-                    ),
-                    _vm._v(" "),
-                    _vm._m(1)
+                    )
                   ])
                 ])
               ]
@@ -61203,20 +61205,6 @@ var staticRenderFns = [
         _c("span", { staticClass: "mobile-menu-btn__item" }),
         _vm._v(" "),
         _c("span", { staticClass: "mobile-menu-btn__item" })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "h2",
-      { staticClass: "footer-title__item mobile-menu__logo-text" },
-      [
-        _vm._v("\n                                Архитектурно-строительный "),
-        _c("br"),
-        _vm._v(" комплекс «инвест»\n                            ")
       ]
     )
   }
@@ -61684,7 +61672,7 @@ var staticRenderFns = [
                   { staticClass: "second-sec-text second-sec-text-mobile" },
                   [
                     _vm._v(
-                      "\n                                Наша клиника обеспечивает комфорт пациента во время стоматологических процедур, заботясь о каждом пациенте. Светлые кабинеты, приятная обстановка, отличный сервис, а главное вы забудете, что находитесь в стоматологии и сможете расслабиться.\n                            "
+                      "\n                                Наша клиника обеспечивает комфорт во время стоматологических процедур, заботясь о каждом пациенте. Светлые кабинеты, приятная обстановка, отличный сервис, а главное вы забудете, что находитесь в стоматологии и сможете расслабиться.\n                            "
                     )
                   ]
                 )

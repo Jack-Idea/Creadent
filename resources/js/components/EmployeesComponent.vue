@@ -20,7 +20,7 @@
                                         {{ employ.name }}
                                     </p>
                                     <p class="employ-info__name">
-                                        {{ employ.jobTitle }}, {{ employ.speciality }}
+                                        {{ employ.jobTitle }}<template v-if="employ.speciality">,</template> {{ employ.speciality }}
                                     </p>
                                 </div>
                             </div>
@@ -42,15 +42,15 @@
                         id: 1,
                         jobTitle: 'Генеральный директор',
                         name: 'Симиониди Иван Ставриевич',
-                        speciality: 'стоматолог-хирург, имплантолог',
+                        speciality: 'стоматолог-ортопед, хирург, терапевт, имплантолог',
                         exp: 'более 15 лет',
                         img: '/img/main-dr3.jpg'
                     },
                     {
                         id: 2,
-                        jobTitle: 'Медицинская сестра',
+                        jobTitle: 'Ассистент врача-стоматолога',
                         name: 'Кузнецова Анна Алексеевна',
-                        speciality: 'стоматолог-хирург, имплантолог',
+                        speciality: 'гигиенист',
                         exp: 'более 15 лет',
                         img: '/img/sestra3.jpg'
                     },
@@ -58,7 +58,7 @@
                         id: 3,
                         jobTitle: 'Администратор',
                         name: 'Селиванова Алина Александровна',
-                        speciality: 'стоматолог-хирург, имплантолог',
+                        speciality: '',
                         exp: 'более 15 лет',
                         img: '/img/administrator3.jpg'
                     }
